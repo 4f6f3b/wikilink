@@ -7,6 +7,7 @@ import wikilink.commands.CommandWiki;
 import wikilink.handlers.ConfigHandler;
 import wikilink.handlers.PacketHandler;
 import wikilink.proxies.CommonProxy;
+import wikilink.plugin.PluginManager;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -24,7 +25,7 @@ import cpw.mods.fml.common.network.NetworkMod;
  */
 
 	@Mod(modid = WikiLinkReference.MOD_ID, name = WikiLinkReference.MOD_NAME, version = WikiLinkReference.MOD_VERSION)
-	@NetworkMod(channels = {WikiLinkReference.MOD_CHANNEL}, clientSideRequired = true, serverSideRequired = false, packetHandler = PacketHandler.class)
+	@NetworkMod(channels = {WikiLinkReference.MOD_CHANNEL}, clientSideRequired = true, serverSideRequired = true, packetHandler = PacketHandler.class)
 
 
 public class WikiLink 
@@ -37,22 +38,28 @@ public class WikiLink
 	public static CommonProxy proxy;
 			
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event)
+	public void preInit(final FMLPreInitializationEvent event)
 	{
 		System.out.println("This is " + WikiLinkReference.MOD_NAME + " " + WikiLinkReference.MOD_VERSION);
 		
 			ConfigHandler.init(event.getSuggestedConfigurationFile());
+			
+	    PluginManager.INSTANCE.loadPlugins(modLocation);
+
+	    PluginManager.doPreInit(config);
 	}
 	
 	@EventHandler
-	public void mainInit(FMLInitializationEvent event)
+	public void mainInit(final FMLInitializationEvent event)
 	{
-	}
-	
-	@EventHandler
-	public void postInit(FMLPostInitializationEvent event)
-	{
+		PluginManager.doInit();
 		
+	}
+	
+	@EventHandler
+	public void postInit(final FMLPostInitializationEvent event)
+	{
+		PluginManager.doPostInit();
 	}
 	
 	@EventHandler
