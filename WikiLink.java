@@ -38,28 +38,29 @@ public class WikiLink
 	public static CommonProxy proxy;
 			
 	@EventHandler
-	public void preInit(final FMLPreInitializationEvent event)
+	public void preInit(FMLPreInitializationEvent event)
 	{
 		System.out.println("This is " + WikiLinkReference.MOD_NAME + " " + WikiLinkReference.MOD_VERSION);
 		
 			ConfigHandler.init(event.getSuggestedConfigurationFile());
 			
-	    PluginManager.INSTANCE.loadPlugins(modLocation);
+	    PluginManager.INSTANCE.loadPlugins(event.getSourceFile());
 
-	    PluginManager.doPreInit(config);
+	    PluginManager.doPreInit();
 	}
 	
 	@EventHandler
-	public void mainInit(final FMLInitializationEvent event)
+	public void mainInit(FMLInitializationEvent event)
 	{
 		PluginManager.doInit();
 		
 	}
 	
 	@EventHandler
-	public void postInit(final FMLPostInitializationEvent event)
+	public void postInit(FMLPostInitializationEvent event)
 	{
 		PluginManager.doPostInit();
+		
 	}
 	
 	@EventHandler

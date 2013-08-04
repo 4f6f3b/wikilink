@@ -27,6 +27,7 @@ public class BrowserHandler
 			if(osName.startsWith("Windows"))
 			{
 				Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + WikiLinkReference.browserHyperlink);
+				System.out.println("Website Opened");
 			}
 			else if(osName.startsWith("Mac OS"))
 			{

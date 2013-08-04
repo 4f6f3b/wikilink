@@ -29,12 +29,12 @@ public class StringHandler
 	public static void hyperlinkBuilder(String[] inputArray)
 	{
 		StringBuilder hyperlinkBuilder = new StringBuilder();
-		for(int i = 1; i < inputArray.length; i++)
+		for(int i = 0; i < inputArray.length; i++)
 		{
 			hyperlinkBuilder.append(inputArray[i] + " ");	
 		}
 		
-		WikiLinkReference.browserHyperlink = WikiLinkReference.defaultWikiUrl + WikiLinkReference.stringMediaWikiSearch + hyperlinkBuilder.toString();
+		WikiLinkReference.browserHyperlink = ConfigHandler.defaultWikiUrl + WikiLinkReference.stringMediaWikiQueryAddress + hyperlinkBuilder.toString();
 	}
 
 	/** defaultHyperlinkBuilder is for the defaultWiki
@@ -50,7 +50,7 @@ public class StringHandler
 			hyperlinkBuilder.append(inputArray[i] + " ");	
 		}
 		
-		WikiLinkReference.browserHyperlink = WikiLinkReference.defaultWikiUrl + WikiLinkReference.stringMediaWikiSearch + hyperlinkBuilder.toString();
+		WikiLinkReference.browserHyperlink = "www.minecraftwiki.net" + WikiLinkReference.stringMediaWikiQueryAddress + hyperlinkBuilder.toString();
 	}
 	
 	

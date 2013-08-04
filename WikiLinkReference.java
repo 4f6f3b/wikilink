@@ -28,15 +28,19 @@ public class WikiLinkReference
 	public static String outputString;
 	public static String browserHyperlink;
 	
-	// Shortcuts for less imports in the future.
-	public static String defaultWikiUrl = ConfigHandler.defaultWikiUrl;
-	
 	/** These are the hyperlink strings for the different 
 	 *  wiki softwares available to use.
 	 *  
 	 *  The StringBuilder uses these.
 	 * 
 	 */
-
-	public static String stringMediaWikiSearch = "/index.php?title=Special%3ASearch&search=";
+	
+	public static String stringDokuWikiQueryAddress = "/wiki.new/doku.php?do=search&id=";
+	
+	public static String stringMediaWikiQueryAddress = "/index.php?title=Special%3ASearch&search=";
+	
+	// Wikia is wierd and has three parts to their search queries
+	public static String stringWikiaWikiQueryPartOne = "/wiki/Special:Search?ns0=1&ns14=1&search=";
+	public static String stringWikiaWikiQueryPartTwo = "&fulltext=";
+	public static String stringWikiaWikiQueryPartThree = "&ns0=1&ns14=1&advanced=&ab=37%2C46";
 }

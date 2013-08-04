@@ -17,6 +17,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public enum PluginManager 
 {
+	
     INSTANCE;
 
     private static void addPlugin(final ClassLoader classLoader, final String pluginName,
@@ -80,7 +81,7 @@ public enum PluginManager
     {
         try
         {
-            final File pluginDir = new File(wikilink.proxies.CommonProxy.getModRoot() + "/mods");
+            final File pluginDir = new File(wikilink.WikiLink.proxy.getModRoot() + "/mods");
             final ClassLoader classLoader = WikiLink.class.getClassLoader();
 
             if (!pluginDir.isDirectory()) return;
