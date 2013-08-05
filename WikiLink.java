@@ -6,6 +6,7 @@ import net.minecraft.server.MinecraftServer;
 import wikilink.commands.CommandWiki;
 import wikilink.handlers.ConfigHandler;
 import wikilink.handlers.PacketHandler;
+import wikilink.handlers.StringHandler;
 import wikilink.proxies.CommonProxy;
 import wikilink.plugin.PluginManager;
 import cpw.mods.fml.common.Mod;
@@ -27,10 +28,12 @@ import cpw.mods.fml.common.network.NetworkMod;
 	@Mod(modid = WikiLinkReference.MOD_ID, name = WikiLinkReference.MOD_NAME, version = WikiLinkReference.MOD_VERSION)
 	@NetworkMod(channels = {WikiLinkReference.MOD_CHANNEL}, clientSideRequired = true, serverSideRequired = true, packetHandler = PacketHandler.class)
 
-
+	
+	
 public class WikiLink 
 {
-
+	public static final boolean wikiDebugMode = false;
+		
 	@Instance(WikiLinkReference.MOD_ID)
 	public static WikiLink instance;
 	
@@ -40,26 +43,23 @@ public class WikiLink
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		System.out.println("This is " + WikiLinkReference.MOD_NAME + " " + WikiLinkReference.MOD_VERSION);
 		
-			ConfigHandler.init(event.getSuggestedConfigurationFile());
+		ConfigHandler.init(event.getSuggestedConfigurationFile());
 			
 	    PluginManager.INSTANCE.loadPlugins(event.getSourceFile());
 
-	    PluginManager.doPreInit();
 	}
 	
 	@EventHandler
 	public void mainInit(FMLInitializationEvent event)
 	{
-		PluginManager.doInit();
-		
+		PluginManager.INSTANCE.listDefaults();
+		PluginManager.INSTANCE.initPlugins();
 	}
 	
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
-		PluginManager.doPostInit();
 		
 	}
 	

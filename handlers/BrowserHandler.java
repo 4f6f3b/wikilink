@@ -17,23 +17,23 @@ import net.minecraft.entity.player.EntityPlayer;
 
 public class BrowserHandler 
 {
-	// I'm not sure if this is supposed to be static or not
+
 	static String osName = System.getProperty("os.name");
 	
-	public static void browserInit(String browserHyperlink, EntityPlayer player)
+	public static void browserInit(String hyperlink, EntityPlayer player)
 	{
 		try
 		{
 			if(osName.startsWith("Windows"))
 			{
-				Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + WikiLinkReference.browserHyperlink);
+				Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + hyperlink);
 				System.out.println("Website Opened");
 			}
 			else if(osName.startsWith("Mac OS"))
 			{
 				 Class fileMgr = Class.forName("com.apple.eio.FileManager");
 	             Method openURL = fileMgr.getDeclaredMethod("openURL", new Class[] {String.class});
-	             openURL.invoke(null, new Object[] {WikiLinkReference.browserHyperlink});
+	             openURL.invoke(null, new Object[] {hyperlink});
 			}
 			else
 			{//assume Unix or Linux
@@ -49,7 +49,7 @@ public class BrowserHandler
 	            if (browser == null) {
 	                throw new Exception();
 	            } else {
-	                Runtime.getRuntime().exec(new String[] {browser, WikiLinkReference.browserHyperlink});
+	                Runtime.getRuntime().exec(new String[] {browser, hyperlink});
 	            }
 			}
 		} catch (Exception e) {

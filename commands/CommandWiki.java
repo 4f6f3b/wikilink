@@ -4,6 +4,7 @@ import wikilink.WikiLinkReference;
 import wikilink.handlers.BrowserHandler;
 import wikilink.handlers.ConfigHandler;
 import wikilink.handlers.StringHandler;
+import wikilink.plugin.PluginManager;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,15 +18,7 @@ public class CommandWiki extends CommandBase
 			EntityPlayer player = (EntityPlayer)icommandsender;
 			
 			
-			// First it takes inputArray and sends it to the hyperlink builder
-			StringHandler.defaulHyperlinkBuilder(inputArray);
-			System.out.println(WikiLinkReference.inputArray + "StringArray Sent to the StringHandler");
-			// Second it checks the default wiki settings
-			//ConfigHandler.defaultWikiChecker();
-			System.out.println("Default Wiki Checked");
-			// third it sends the link to the browser handler
-			BrowserHandler.browserInit(WikiLinkReference.browserHyperlink, player);
-			System.out.println(WikiLinkReference.browserHyperlink + "String Sent to the BrowserHandler");
+			StringHandler.wikiInit(StringHandler.keyList, StringHandler.nameList, StringHandler.domainList, StringHandler.softwareList, inputArray, player);
 			
 		}
 	}

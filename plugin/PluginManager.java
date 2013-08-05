@@ -2,12 +2,15 @@ package wikilink.plugin;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import wikilink.WikiLink;
 import wikilink.api.Plugin;
+import wikilink.handlers.ConfigHandler;
+import wikilink.handlers.StringHandler;
 
 import com.google.common.collect.Lists;
 
@@ -59,22 +62,39 @@ public enum PluginManager
         {}
     }
 
-    public static void doInit()
+    /** listDefaults is a small listWriter that adds the default
+     *  wikis to the list first so they are are the first indexes.
+     */
+	public void listDefaults()
+	{
+		StringHandler.keyList.add(ConfigHandler.defaultWikiKey);
+		StringHandler.nameList.add(ConfigHandler.defaultWikiName);
+		StringHandler.domainList.add(ConfigHandler.defaultWikiDomain);
+		StringHandler.softwareList.add(ConfigHandler.defaultWikiSoftware);
+		
+		System.out.println("[WikiLink] Loading the strings required for the Default Wiki");
+	}
+    
+    public void initPlugins()
     {
-        for (final Plugin plugin : INSTANCE.plugins)
-            if (plugin.isAvailable()) plugin.doInit();
-    }
-
-    public static void doPostInit()
-    {
-        for (final Plugin plugin : INSTANCE.plugins)
-            if (plugin.isAvailable()) plugin.postInit();
-    }
-
-    public static void doPreInit()
-    {
-        for (final Plugin plugin : INSTANCE.plugins)
-            if (plugin.isAvailable()) plugin.preInit();
+	
+    	for (Plugin plugin: plugins)
+    	{
+    		if(StringHandler.keyList.contains(plugin.getWikiKey()))
+    		{
+    			System.out.println("[WikiLink] Cannot load strings from " + plugin.getWikiName() + " ... Please change your wiki key!");
+    		}
+    		else
+    		{
+    			StringHandler.keyList.add(plugin.getWikiKey());
+    			StringHandler.nameList.add(plugin.getWikiName());
+    			StringHandler.domainList.add(plugin.getWikiDomain());
+    			StringHandler.softwareList.add(plugin.getWikiSoftware());
+    			
+    			System.out.println("[WikiLink] Loading the strings required from " + plugin.getWikiName());
+    		}
+    		
+    	}
     }
 
     private static void loadExternalPlugins(final File modLocation)

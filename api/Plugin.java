@@ -2,41 +2,70 @@ package wikilink.api;
 
 public interface Plugin
 {
-    /**
-     * Called during Mod's FMLInitializationEvent
-     * 
-     * @since 1.0
-     * 
-     */
-    public void doInit();
-
-    /**
-     * Determines whether the plugin should be invoked (i.e. Allows the plugin to determine its
-     * preconditions for invocation.)<br />
-     * A plugin's availability is checked before each call to preInit(), doInit, and postInit()
-     * 
-     * @return Boolean indicating whether the plugin is currently active.
-     * @since 1.0
-     * 
-     */
+    enum WikiType
+    {
+    	MEDIAWIKI, WIKIA, DOKUWIKI, CUSTOM
+    }
+    
+    /** Is this plugin available for WikiLink
+     *  to use?
+     *  
+     *  true/false
+     *   
+     *  @since 1.6.2-011
+     */	
     public boolean isAvailable();
-
-    /**
-     * Called during Mod's FMLPostInitializationEvent
-     * 
-     * @since 1.0
-     * 
+    
+    /** Please enter the @modid value here.
+     *  It's not used yet, but it will be used
+     *  for NEI integration in a later update.
+     *   
+     *  @since 1.6.2-011
      */
-    public void postInit();
-
-    /**
-     * Called during Mod's FMLPreInitializationEvent
-     * 
-     * @param config
-     *            ConfigurationHandler providing access to Mod config file
-     * @since 1.0
-     * 
+    public String getModID(); 
+    
+    /** This is the "code" to access your wiki.
+     *  /wiki <key> <query>
+     *  
+     *  @since 1.6.2-010
      */
-    public void preInit();
+    public String getWikiKey();
+    
+    /** This is the english name of your wiki.
+     *  "Example Wiki"
+     *  
+     *  @since 1.6.2-010
+     */    
+    public String getWikiName();
+    
+    /** This is the domain name of your wiki.
+     *  "wiki.example.com"
+     *  
+     *  Please do not add any slashes!
+     *  
+     *  @since 1.6.2-010
+     */    
+    public String getWikiDomain();
+    
+    /** This is the software name of your wiki.
+     *  "MEDIAWIKI","DOKUWIKI","WIKIA","WIKISPACES","PHPWIKI"
+     * 
+     *  
+     *  You can create a custom one, just follow the
+     *  instructions on the forum post.
+     *  
+     *  @since 1.6.2-010
+     */
+    public String getWikiSoftware();
+    
+    /** You can create a custom wiki software.
+     *  enum WikiType = CUSTOM;
+     *  
+     *  Paste in the search domain here
+     *  ex: "/index.php?search="
+     *  
+     *  @since 1.6.2-011
+     */
+    public String getCustomWikiSearchFormat();
+	
 }
-
