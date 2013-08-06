@@ -59,10 +59,11 @@ public interface Plugin
     public String getWikiSoftware();
     
     /** You can create a custom wiki software.
-     *  enum WikiType = CUSTOM;
      *  
-     *  Paste in the search domain here
-     *  ex: "/index.php?search="
+     *  This is not implemented yet. Please
+     *  return null for custom wiki software.
+     *
+     * If you need wiki software added, just message DrEinsteinium  
      *  
      *  @since 1.6.2-011
      */
