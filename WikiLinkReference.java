@@ -13,7 +13,7 @@ public class WikiLinkReference
 	//@Mod
 	public static final String MOD_ID = "WikiLink";
 	public static final String MOD_NAME = "WikiLink";
-	public static final String MOD_VERSION = "Alpha Build 011";
+	public static final String MOD_VERSION = "Build 012";
 	
 	//@NetworkMod
 	public static final String MOD_CHANNEL = "wikiLink";

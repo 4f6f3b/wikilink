@@ -1,6 +1,8 @@
-package wikilink.api;
+package wikilink.module;
 
-public class PluginFeedTheBeastWiki implements Plugin
+import wikilink.api.Plugin;
+
+public class PluginMinecraftWiki implements Plugin
 {
 
 	@Override
@@ -9,8 +11,7 @@ public class PluginFeedTheBeastWiki implements Plugin
 		return true;
 	}
 
-	@Override
-	public String getModID() {
+	@Override	public String getModID() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -18,19 +19,19 @@ public class PluginFeedTheBeastWiki implements Plugin
 	@Override
 	public String getWikiKey() {
 		// TODO Auto-generated method stub
-		return "ftb";
+		return "mcw";
 	}
 
 	@Override
 	public String getWikiName() {
 		// TODO Auto-generated method stub
-		return "Feed the Beast Wiki";
+		return "Minecraft Wiki";
 	}
 
 	@Override
 	public String getWikiDomain() {
 		// TODO Auto-generated method stub
-		return "wiki.feed-the-beast.com";
+		return "wiki.minecraft.net";
 	}
 
 	@Override

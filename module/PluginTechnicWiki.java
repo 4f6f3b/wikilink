@@ -1,4 +1,6 @@
-package wikilink.api;
+package wikilink.module;
+
+import wikilink.api.Plugin;
 
 public class PluginTechnicWiki implements Plugin
 {

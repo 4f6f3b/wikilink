@@ -1,0 +1,17 @@
+[
+{
+  "modid": "WikiLink",
+  "name": "WikiLink",
+  "description": "Wiki Toolkit for adding and opening information source ingame through the use of a slash command.",
+  "version": "Alpha Build 011",
+  "mcversion": "1.6.2",
+  "logoFile": "/wikilinklogo.png",
+  "url": "http://www.keep-a-block.com/",
+  "updateUrl": "",
+  "authors": ["DrEinsteinium", "Others"],
+  "credits": "SteveKillen for help with the PluginManager",
+  "parent": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

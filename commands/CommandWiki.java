@@ -1,5 +1,7 @@
 package wikilink.commands;
 
+import java.util.List;
+
 import wikilink.WikiLinkReference;
 import wikilink.handlers.BrowserHandler;
 import wikilink.handlers.ConfigHandler;
@@ -8,6 +10,7 @@ import wikilink.plugin.PluginManager;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.server.MinecraftServer;
 
 public class CommandWiki extends CommandBase
 {
@@ -34,4 +37,5 @@ public class CommandWiki extends CommandBase
 	{
 		return "/wiki <wiki> <search term>";
 	}
+
 }

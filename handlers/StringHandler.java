@@ -2,6 +2,7 @@ package wikilink.handlers;
 
 import java.util.ArrayList;
 
+import cpw.mods.fml.common.Loader;
 import net.minecraft.entity.player.EntityPlayer;
 import wikilink.api.Plugin;
 import wikilink.WikiLink;
@@ -45,6 +46,7 @@ public class StringHandler
 			System.out.println("Name List: " + nameList);
 			System.out.println("Domain List: " + domainList);
 			System.out.println("Software List: " + softwareList);
+			System.out.println("Mod List: "+ Loader.instance().getIndexedModList());
 		}
 		// KEY PARSER
 		if(keyList.contains(inputArray[0]))
@@ -119,6 +121,18 @@ public class StringHandler
 						
 				}	
 			
+		}
+		else if(inputArray[0].equals("keys"))
+		{
+			player.addChatMessage(keyList.toString());
+		}
+		else if(inputArray[0].equals("help"))
+		{
+			player.addChatMessage("Using WikiLink is as easy as pie. Just follow these instructions:");
+			player.addChatMessage("1. Find the name of item you would like to search for.");
+			player.addChatMessage("2. Use the command /wiki keys for a list of wikis.");
+			player.addChatMessage("3. Then use /wiki <key> <item name>");
+			player.addChatMessage("4. Final Example: /wiki mcw pumpkin pie");
 		}
 		else
 		{

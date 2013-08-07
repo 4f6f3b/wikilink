@@ -32,7 +32,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 	
 public class WikiLink 
 {
-	public static final boolean wikiDebugMode = false;
+	public static final boolean wikiDebugMode = true;
 		
 	@Instance(WikiLinkReference.MOD_ID)
 	public static WikiLink instance;
@@ -60,7 +60,7 @@ public class WikiLink
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
-		
+		//NEIWikiLinkConfig.init();
 	}
 	
 	@EventHandler
